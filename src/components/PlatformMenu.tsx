@@ -1,5 +1,5 @@
 import usePlatforms, { Platform } from '@/hooks/usePlatforms';
-import { Button, Badge, Text, HStack, Spinner } from '@chakra-ui/react';
+import { Button, Badge, Text, Spinner } from '@chakra-ui/react';
 import {
   MenuContent,
   MenuItem,
@@ -17,9 +17,9 @@ const PlatformMenu = ({ onPlatformSelect }: Props) => {
 
   if (loading)
     return (
-      <HStack justifyContent='center' p={5}>
-        <Spinner />
-      </HStack>
+      // <HStack justifyContent='center' p={5} alignItems='center'>
+      <Spinner />
+      // </HStack>
     );
 
   if (error) return null;
