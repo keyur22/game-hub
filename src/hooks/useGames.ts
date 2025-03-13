@@ -11,6 +11,7 @@ export interface Game {
   name: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
+  metacritic: number;
 }
 
 interface GamesResponse {
@@ -20,7 +21,7 @@ interface GamesResponse {
 
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState();
+  const [error, setError] = useState('');
 
   const fetchGames = async (signal: AbortSignal) => {
     try {

@@ -32,7 +32,7 @@ const iconMap: { [key: string]: ReactNode } = {
 
 const PlatformIcons = ({ platforms }: Props) => {
   return (
-    <HStack gap={3} pt={5} flexWrap='wrap'>
+    <HStack gap={3} flexWrap='wrap'>
       {platforms.map((x) => (
         <span key={x.id}>{iconMap[x.slug]}</span>
       ))}
