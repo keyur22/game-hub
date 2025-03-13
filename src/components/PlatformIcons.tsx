@@ -23,7 +23,7 @@ const iconMap: { [key: string]: ReactNode } = {
   playstation: <FaPlaystation />,
   xbox: <FaXbox />,
   mac: <FaApple />,
-  'nintendo-switch': <SiNintendo />,
+  nintendo: <SiNintendo />,
   linux: <FaLinux />,
   android: <FaAndroid />,
   ios: <MdPhoneIphone />,
@@ -32,7 +32,7 @@ const iconMap: { [key: string]: ReactNode } = {
 
 const PlatformIcons = ({ platforms }: Props) => {
   return (
-    <HStack py={4}>
+    <HStack gap={3} pt={5} flexWrap='wrap'>
       {platforms.map((x) => (
         <span key={x.id}>{iconMap[x.slug]}</span>
       ))}
