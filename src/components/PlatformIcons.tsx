@@ -31,6 +31,8 @@ const iconMap: { [key: string]: ReactNode } = {
 };
 
 const PlatformIcons = ({ platforms }: Props) => {
+  if (!platforms?.length) return null;
+
   return (
     <HStack gap={3} flexWrap='wrap'>
       {platforms.map((x) => (

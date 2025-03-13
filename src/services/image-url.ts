@@ -1,5 +1,7 @@
+import ImagePlaceholder from '../assets/no-image-placeholder.webp';
+
 export const getCroppedImageUrl = (url: string) => {
-  if (!url) return '';
+  if (!url) return ImagePlaceholder;
 
   const target = 'media/';
 
