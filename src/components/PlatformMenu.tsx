@@ -9,18 +9,14 @@ import {
 import { BsChevronDown } from 'react-icons/bs';
 
 interface Props {
+  selectedPlatform: Platform | null;
   onPlatformSelect: (platform: Platform | null) => void;
 }
 
-const PlatformMenu = ({ onPlatformSelect }: Props) => {
+const PlatformMenu = ({ selectedPlatform, onPlatformSelect }: Props) => {
   const { data, error, loading } = usePlatforms();
 
-  if (loading)
-    return (
-      // <HStack justifyContent='center' p={5} alignItems='center'>
-      <Spinner />
-      // </HStack>
-    );
+  if (loading) return <Spinner />;
 
   if (error) return null;
 
@@ -28,7 +24,7 @@ const PlatformMenu = ({ onPlatformSelect }: Props) => {
     <MenuRoot>
       <MenuTrigger asChild>
         <Button variant='solid' size='sm'>
-          Platforms <BsChevronDown />
+          {selectedPlatform?.name || 'Platforms'} <BsChevronDown />
         </Button>
       </MenuTrigger>
       <MenuContent>

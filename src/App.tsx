@@ -11,6 +11,7 @@ import SortMenu from './components/SortMenu';
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 function App() {
@@ -43,11 +44,17 @@ function App() {
         <GridItem area='main'>
           <HStack gap={5} mb={5} alignItems='center'>
             <PlatformMenu
+              selectedPlatform={gameQuery.platform}
               onPlatformSelect={(platform) =>
                 setGameQuery({ ...gameQuery, platform })
               }
             />
-            <SortMenu />
+            <SortMenu
+              sortOrder={gameQuery.sortOrder}
+              onSortOrderSelect={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
+              }
+            />
           </HStack>
           <GameGrid gameQuery={gameQuery} />
         </GridItem>
