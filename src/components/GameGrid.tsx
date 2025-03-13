@@ -4,7 +4,7 @@ import GameCard from './GameCard';
 import GameCardSkeleton from './GameCardSkeleton';
 
 const GameGrid = () => {
-  const { loading, games, error } = useGames();
+  const { loading, data: games, error } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   // console.log(loading);
