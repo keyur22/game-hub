@@ -26,6 +26,7 @@ function App() {
           xl: `0.6fr repeat(3, 1fr)`
         }}
         templateAreas={{
+          base: `"nav" "main"`,
           lg: `"nav nav nav" "aside main main"`,
           xl: `"nav nav nav nav" "aside main main main"`
         }}
@@ -34,15 +35,15 @@ function App() {
           <Navbar />
         </GridItem>
         <Stack hideBelow='lg'>
-          <GridItem area='aside'>
+          <GridItem area='aside' mt={5}>
             <GenreList
               onGenreSelect={(genre) => setGameQuery({ ...gameQuery, genre })}
               selectedGenre={gameQuery.genre}
             />
           </GridItem>
         </Stack>
-        <GridItem area='main'>
-          <HStack gap={5} mb={5} alignItems='center'>
+        <GridItem area='main' mt={5}>
+          <HStack gap={5} padding={3} alignItems='center'>
             <PlatformMenu
               selectedPlatform={gameQuery.platform}
               onPlatformSelect={(platform) =>
