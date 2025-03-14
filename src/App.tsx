@@ -51,7 +51,7 @@ function App() {
         </Stack>
         <GridItem area='main' mt={{ base: 0, lg: 5 }} p={4}>
           <GameHeading gameQuery={gameQuery} />
-          <HStack gap={3} mt={5} alignItems='center' flexWrap='wrap'>
+          <HStack gap={4} mt={5} alignItems='center' flexWrap='wrap'>
             <PlatformMenu
               selectedPlatform={gameQuery.platform}
               onPlatformSelect={(platform) =>
