@@ -14,7 +14,7 @@ interface Props {
 }
 
 const PlatformMenu = ({ selectedPlatform, onPlatformSelect }: Props) => {
-  const { data, error, loading } = usePlatforms();
+  const { data, error, isLoading: loading } = usePlatforms();
 
   if (loading) return <Spinner />;
 

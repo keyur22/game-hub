@@ -7,7 +7,8 @@ import {
   Spinner,
   Button,
   Heading,
-  Box
+  Box,
+  Text
 } from '@chakra-ui/react';
 
 interface Props {
@@ -25,7 +26,12 @@ const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
       </HStack>
     );
 
-  if (error || !genres?.length) return null;
+  if (error || !genres?.length)
+    return (
+      <Text p={5} color='red'>
+        Not able to fetch genres
+      </Text>
+    );
 
   return (
     <Box p={5}>
