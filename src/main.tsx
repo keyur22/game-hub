@@ -10,13 +10,13 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ChakraProvider value={defaultSystem}>
-        <ColorModeProvider>
+    <ChakraProvider value={defaultSystem}>
+      <ColorModeProvider>
+        <QueryClientProvider client={queryClient}>
           <App />
           <ReactQueryDevtools initialIsOpen={false} />
-        </ColorModeProvider>
-      </ChakraProvider>
-    </QueryClientProvider>
+        </QueryClientProvider>
+      </ColorModeProvider>
+    </ChakraProvider>
   </StrictMode>
 );
