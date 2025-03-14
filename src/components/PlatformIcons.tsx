@@ -15,7 +15,7 @@ import { HStack } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 interface Props {
-  platforms: Platform[];
+  platforms: Platform[] | null;
 }
 
 const iconMap: { [key: string]: ReactNode } = {
