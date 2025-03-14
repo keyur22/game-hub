@@ -12,7 +12,10 @@ const SearchInput = ({ onSearch }: Props) => {
 
   const onSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputRef.current) onSearch(inputRef.current?.value);
+    if (inputRef.current) {
+      onSearch(inputRef.current?.value);
+      inputRef.current.blur();
+    }
     return;
   };
 
