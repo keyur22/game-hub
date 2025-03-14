@@ -9,12 +9,12 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { loading, data: games, error } = useGames(gameQuery);
+  const { isLoading: loading, data: games, error } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <Box w='100%'>
-      {!loading && error && <Text>{error}</Text>}
+      {!loading && error && <Text>{error.message}</Text>}
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={5} mt={10}>
         {loading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
