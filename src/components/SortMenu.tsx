@@ -32,7 +32,7 @@ const SortMenu = ({ sortOrder, onSortOrderSelect }: Props) => {
   return (
     <MenuRoot>
       <MenuTrigger asChild>
-        <Button variant='solid' size='sm'>
+        <Button variant='solid'>
           Order By: {selectedSortOrder?.label || 'Relevance'} <BsChevronDown />
         </Button>
       </MenuTrigger>

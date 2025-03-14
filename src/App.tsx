@@ -7,11 +7,13 @@ import { useState } from 'react';
 import PlatformMenu from './components/PlatformMenu';
 import { Platform } from './hooks/usePlatforms';
 import SortMenu from './components/SortMenu';
+import './App.css';
 
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchInput: string;
 }
 
 function App() {
@@ -32,7 +34,11 @@ function App() {
         }}
       >
         <GridItem area='nav'>
-          <Navbar />
+          <Navbar
+            onSearch={(searchInput) =>
+              setGameQuery({ ...gameQuery, searchInput })
+            }
+          />
         </GridItem>
         <Stack hideBelow='lg'>
           <GridItem area='aside' mt={5}>
@@ -43,7 +49,7 @@ function App() {
           </GridItem>
         </Stack>
         <GridItem area='main' mt={5}>
-          <HStack gap={5} padding={3} alignItems='center'>
+          <HStack gap={5} padding={4} alignItems='center'>
             <PlatformMenu
               selectedPlatform={gameQuery.platform}
               onPlatformSelect={(platform) =>
