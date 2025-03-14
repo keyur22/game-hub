@@ -5,6 +5,7 @@ export interface Platform {
   id: number;
   name: string;
   games_count: number;
+  slug: string;
 }
 
 const fetchPlatforms = () =>
