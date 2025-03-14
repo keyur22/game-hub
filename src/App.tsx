@@ -8,6 +8,7 @@ import PlatformMenu from './components/PlatformMenu';
 import { Platform } from './hooks/usePlatforms';
 import SortMenu from './components/SortMenu';
 import './App.css';
+import GameHeading from './components/GameHeading';
 
 export interface GameQuery {
   genre: Genre | null;
@@ -49,6 +50,7 @@ function App() {
           </GridItem>
         </Stack>
         <GridItem area='main' mt={5}>
+          <GameHeading gameQuery={gameQuery} />
           <HStack gap={5} padding={4} alignItems='center'>
             <PlatformMenu
               selectedPlatform={gameQuery.platform}
