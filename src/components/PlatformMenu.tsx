@@ -1,5 +1,5 @@
 import usePlatforms, { Platform } from '@/hooks/usePlatforms';
-import { Button, Badge, Text, Spinner } from '@chakra-ui/react';
+import { Button, Text, Spinner } from '@chakra-ui/react';
 import {
   MenuContent,
   MenuItem,
@@ -38,9 +38,6 @@ const PlatformMenu = ({ selectedPlatform, onPlatformSelect }: Props) => {
             onClick={() => onPlatformSelect(platform)}
           >
             <Text>{platform.name}</Text>
-            <Badge py='1' borderRadius='md' variant='solid'>
-              {platform.games_count}
-            </Badge>
           </MenuItem>
         ))}
       </MenuContent>

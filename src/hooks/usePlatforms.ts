@@ -4,13 +4,12 @@ import apiClient, { Response } from '@/services/api-client';
 export interface Platform {
   id: number;
   name: string;
-  games_count: number;
   slug: string;
 }
 
 const fetchPlatforms = () =>
   apiClient
-    .get<Response<Platform>>('/platforms')
+    .get<Response<Platform>>('/platforms/lists/parents')
     .then((res) => res.data.results);
 
 const usePlatforms = () =>

@@ -18,7 +18,7 @@ const fetchGames = (gameQuery: GameQuery) => {
     .get<Response<Game>>('/games', {
       params: {
         genres: genre?.id,
-        platforms: platform?.id,
+        parent_platforms: platform?.id,
         ordering: sortOrder,
         search: searchInput
       }
