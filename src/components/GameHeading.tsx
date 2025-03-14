@@ -11,7 +11,7 @@ const GameHeading = ({ gameQuery }: Props) => {
   const label = `${genre?.name || ''} ${platform?.name || ''}`;
 
   return (
-    <Heading size='4xl' fontWeight='bold' p={3}>
+    <Heading size='4xl' fontWeight='bold'>
       <Text as='span' color='pink.400'>
         {label}
       </Text>{' '}
