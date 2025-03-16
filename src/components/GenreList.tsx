@@ -26,7 +26,7 @@ const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
       </HStack>
     );
 
-  if (error || !genres?.length)
+  if (error || !genres?.results?.length)
     return (
       <Text p={5} color='red'>
         Not able to fetch genres
@@ -39,7 +39,7 @@ const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
         Genres
       </Heading>
       <List.Root listStyle='none' gap={5}>
-        {genres?.map((genre) => (
+        {genres?.results?.map((genre) => (
           <List.Item key={genre.id}>
             <HStack>
               <Image
