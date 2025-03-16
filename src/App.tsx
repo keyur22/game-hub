@@ -4,14 +4,13 @@ import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
 import { useState } from 'react';
 import PlatformMenu from './components/PlatformMenu';
-import { Platform } from './hooks/usePlatforms';
 import SortMenu from './components/SortMenu';
 import './App.css';
 import GameHeading from './components/GameHeading';
 
 export interface GameQuery {
   genreId?: number;
-  platform: Platform | null;
+  platformId?: number;
   sortOrder: string;
   searchInput: string;
 }
@@ -51,9 +50,9 @@ function App() {
         <GameHeading gameQuery={gameQuery} />
         <HStack gap={4} mt={5} alignItems='center' flexWrap='wrap'>
           <PlatformMenu
-            selectedPlatform={gameQuery.platform}
-            onPlatformSelect={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
+            selectedPlatformId={gameQuery.platformId}
+            onPlatformSelect={(platformId) =>
+              setGameQuery({ ...gameQuery, platformId })
             }
           />
           <SortMenu

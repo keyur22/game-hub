@@ -14,12 +14,12 @@ export interface Game {
 }
 
 const fetchGames = (gameQuery: GameQuery, pageParam: unknown) => {
-  const { genreId, platform, searchInput, sortOrder } = gameQuery;
+  const { genreId, platformId, searchInput, sortOrder } = gameQuery;
 
   return apiClient.getAll({
     params: {
       genres: genreId,
-      parent_platforms: platform?.id,
+      parent_platforms: platformId,
       ordering: sortOrder,
       search: searchInput,
       page: pageParam
