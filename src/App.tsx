@@ -2,22 +2,12 @@ import { Grid, GridItem, HStack, Stack } from '@chakra-ui/react';
 import Navbar from './components/Navbar';
 import GameGrid from './components/GameGrid';
 import GenreList from './components/GenreList';
-import { useState } from 'react';
 import PlatformMenu from './components/PlatformMenu';
 import SortMenu from './components/SortMenu';
 import './App.css';
 import GameHeading from './components/GameHeading';
 
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  sortOrder: string;
-  searchInput: string;
-}
-
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
   return (
     <Grid
       templateColumns={{
@@ -32,37 +22,20 @@ function App() {
       }}
     >
       <GridItem area='nav'>
-        <Navbar
-          onSearch={(searchInput) =>
-            setGameQuery({ ...gameQuery, searchInput })
-          }
-        />
+        <Navbar />
       </GridItem>
       <Stack hideBelow='lg'>
         <GridItem area='aside' mt={5}>
-          <GenreList
-            onGenreSelect={(genreId) => setGameQuery({ ...gameQuery, genreId })}
-            selectedGenreId={gameQuery.genreId}
-          />
+          <GenreList />
         </GridItem>
       </Stack>
       <GridItem area='main' mt={{ base: 0, lg: 5 }} p={4}>
-        <GameHeading gameQuery={gameQuery} />
+        <GameHeading />
         <HStack gap={4} mt={5} alignItems='center' flexWrap='wrap'>
-          <PlatformMenu
-            selectedPlatformId={gameQuery.platformId}
-            onPlatformSelect={(platformId) =>
-              setGameQuery({ ...gameQuery, platformId })
-            }
-          />
-          <SortMenu
-            sortOrder={gameQuery.sortOrder}
-            onSortOrderSelect={(sortOrder) =>
-              setGameQuery({ ...gameQuery, sortOrder })
-            }
-          />
+          <PlatformMenu />
+          <SortMenu />
         </HStack>
-        <GameGrid gameQuery={gameQuery} />
+        <GameGrid />
       </GridItem>
     </Grid>
   );

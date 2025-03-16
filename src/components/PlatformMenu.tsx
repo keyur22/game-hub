@@ -7,14 +7,16 @@ import {
   MenuTrigger
 } from '@/components/ui/menu';
 import { BsChevronDown } from 'react-icons/bs';
+import useGameQueryStore from '@/store';
 
-interface Props {
-  selectedPlatformId?: number;
-  onPlatformSelect: (platformId: number) => void;
-}
-
-const PlatformMenu = ({ selectedPlatformId, onPlatformSelect }: Props) => {
+const PlatformMenu = () => {
   const { data, error, isLoading: loading } = usePlatforms();
+
+  const selectedPlatformId = useGameQueryStore(
+    (state) => state.gameQuery.platformId
+  );
+  const onPlatformSelect = useGameQueryStore((state) => state.setPlatformId);
+
   const selectedPlatform = data?.results.find(
     (platform) => platform.id === selectedPlatformId
   );
