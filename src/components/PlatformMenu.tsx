@@ -1,5 +1,5 @@
-import usePlatforms, { Platform } from '@/hooks/usePlatforms';
-import { Button, Badge, Text, Spinner } from '@chakra-ui/react';
+import usePlatforms from '@/hooks/usePlatforms';
+import { Button, Text, Spinner } from '@chakra-ui/react';
 import {
   MenuContent,
   MenuItem,
@@ -9,12 +9,15 @@ import {
 import { BsChevronDown } from 'react-icons/bs';
 
 interface Props {
-  selectedPlatform: Platform | null;
-  onPlatformSelect: (platform: Platform | null) => void;
+  selectedPlatformId?: number;
+  onPlatformSelect: (platformId: number) => void;
 }
 
-const PlatformMenu = ({ selectedPlatform, onPlatformSelect }: Props) => {
-  const { data, error, loading } = usePlatforms();
+const PlatformMenu = ({ selectedPlatformId, onPlatformSelect }: Props) => {
+  const { data, error, isLoading: loading } = usePlatforms();
+  const selectedPlatform = data?.results.find(
+    (platform) => platform.id === selectedPlatformId
+  );
 
   if (loading) return <Spinner />;
 
@@ -28,19 +31,16 @@ const PlatformMenu = ({ selectedPlatform, onPlatformSelect }: Props) => {
         </Button>
       </MenuTrigger>
       <MenuContent>
-        {data?.map((platform) => (
+        {data?.results?.map((platform) => (
           <MenuItem
             key={platform.id}
             value={platform.name}
             justifyContent='space-between'
             my={2}
             cursor='pointer'
-            onClick={() => onPlatformSelect(platform)}
+            onClick={() => onPlatformSelect(platform.id)}
           >
             <Text>{platform.name}</Text>
-            <Badge py='1' borderRadius='md' variant='solid'>
-              {platform.games_count}
-            </Badge>
           </MenuItem>
         ))}
       </MenuContent>

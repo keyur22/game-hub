@@ -1,4 +1,4 @@
-import useGenres, { Genre } from '@/hooks/useGenres';
+import useGenres from '@/hooks/useGenres';
 import { getCroppedImageUrl } from '@/services/image-url';
 import {
   List,
@@ -7,16 +7,17 @@ import {
   Spinner,
   Button,
   Heading,
-  Box
+  Box,
+  Text
 } from '@chakra-ui/react';
 
 interface Props {
-  onGenreSelect: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  onGenreSelect: (genreId: number) => void;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
-  const { loading, data: genres, error } = useGenres();
+const GenreList = ({ onGenreSelect, selectedGenreId }: Props) => {
+  const { isLoading: loading, data: genres, error } = useGenres();
 
   if (loading)
     return (
@@ -25,7 +26,12 @@ const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
       </HStack>
     );
 
-  if (error) return null;
+  if (error || !genres?.results?.length)
+    return (
+      <Text p={5} color='red'>
+        Not able to fetch genres
+      </Text>
+    );
 
   return (
     <Box p={5}>
@@ -33,7 +39,7 @@ const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
         Genres
       </Heading>
       <List.Root listStyle='none' gap={5}>
-        {genres.map((genre) => (
+        {genres?.results?.map((genre) => (
           <List.Item key={genre.id}>
             <HStack>
               <Image
@@ -44,11 +50,9 @@ const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
                 objectFit='cover'
               />
               <Button
-                onClick={() => onGenreSelect(genre)}
+                onClick={() => onGenreSelect(genre.id)}
                 variant='ghost'
-                fontWeight={
-                  selectedGenre?.id === genre.id ? 'bolder' : 'normal'
-                }
+                fontWeight={selectedGenreId === genre.id ? 'bolder' : 'normal'}
                 whiteSpace='normal'
                 textAlign='left'
               >
