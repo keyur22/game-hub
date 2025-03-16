@@ -1,4 +1,5 @@
 import { GameQuery } from '@/App';
+import useGenres from '@/hooks/useGenres';
 import { Heading, Text } from '@chakra-ui/react';
 
 interface Props {
@@ -6,7 +7,9 @@ interface Props {
 }
 
 const GameHeading = ({ gameQuery }: Props) => {
-  const { platform, genre } = gameQuery;
+  const { data } = useGenres();
+  const { platform, genreId } = gameQuery;
+  const genre = data?.results.find((genre) => genre.id === genreId);
 
   const label = `${genre?.name || ''} ${platform?.name || ''}`;
 

@@ -1,4 +1,4 @@
-import useGenres, { Genre } from '@/hooks/useGenres';
+import useGenres from '@/hooks/useGenres';
 import { getCroppedImageUrl } from '@/services/image-url';
 import {
   List,
@@ -12,11 +12,11 @@ import {
 } from '@chakra-ui/react';
 
 interface Props {
-  onGenreSelect: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  onGenreSelect: (genreId: number) => void;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
+const GenreList = ({ onGenreSelect, selectedGenreId }: Props) => {
   const { isLoading: loading, data: genres, error } = useGenres();
 
   if (loading)
@@ -50,11 +50,9 @@ const GenreList = ({ onGenreSelect, selectedGenre }: Props) => {
                 objectFit='cover'
               />
               <Button
-                onClick={() => onGenreSelect(genre)}
+                onClick={() => onGenreSelect(genre.id)}
                 variant='ghost'
-                fontWeight={
-                  selectedGenre?.id === genre.id ? 'bolder' : 'normal'
-                }
+                fontWeight={selectedGenreId === genre.id ? 'bolder' : 'normal'}
                 whiteSpace='normal'
                 textAlign='left'
               >
