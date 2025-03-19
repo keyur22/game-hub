@@ -11,7 +11,6 @@ const Navbar = () => {
         <Image src={Logo} alt='Logo' boxSize='60px' />
       </Link>
       <SearchInput />
-      <Link to='games/2'>Link</Link>
       <ColorModeButton margin='0 0 0 auto' />
     </HStack>
   );
