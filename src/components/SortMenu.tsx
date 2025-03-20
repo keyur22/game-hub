@@ -7,13 +7,12 @@ import {
 } from '@/components/ui/menu';
 
 import { BsChevronDown } from 'react-icons/bs';
+import useGameQueryStore from '@/store';
 
-interface Props {
-  sortOrder: string;
-  onSortOrderSelect: (sortOrder: string) => void;
-}
+const SortMenu = () => {
+  const sortOrder = useGameQueryStore((state) => state.gameQuery.sortOrder);
+  const onSortOrderSelect = useGameQueryStore((state) => state.setSortOrder);
 
-const SortMenu = ({ sortOrder, onSortOrderSelect }: Props) => {
   const sortOrders = [
     {
       label: 'Name',

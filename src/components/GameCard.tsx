@@ -1,17 +1,30 @@
-import { Game } from '@/hooks/useGames';
+import { Game } from '@/entities/Game';
 import { Card, CardBody, Heading, HStack, Image } from '@chakra-ui/react';
 import PlatformIcons from './PlatformIcons';
 import CriticScore from './CriticScore';
 import { getPlatformIconsList } from '@/utils/platform-icons';
 import { getCroppedImageUrl } from '@/services/image-url';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
+  const navigate = useNavigate();
+
   return (
-    <Card.Root borderRadius={10} overflow='hidden'>
+    <Card.Root
+      borderRadius={10}
+      overflow='hidden'
+      boxShadow={'2xl'}
+      cursor='pointer'
+      _hover={{
+        transform: 'scale(1.03)',
+        transition: 'transform 0.3s ease-in-out'
+      }}
+      onClick={() => navigate(`games/${game.slug}`)}
+    >
       <Image
         src={getCroppedImageUrl(game.background_image)}
         loading='lazy'
