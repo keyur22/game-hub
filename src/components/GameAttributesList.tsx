@@ -11,7 +11,7 @@ const GameAttributesList = ({ game }: Props) => {
   const { parent_platforms, metacritic, genres, publishers } = game;
 
   return (
-    <SimpleGrid columns={2} gap={5} mt={10} as='dl'>
+    <SimpleGrid columns={{ base: 2, md: 4 }} gap={5} mt={10} as='dl'>
       <GameAttribute title='Platform'>
         {parent_platforms.map(({ platform }) => (
           <Text key={platform.id} my={1}>
