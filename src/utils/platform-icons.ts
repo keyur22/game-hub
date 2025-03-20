@@ -1,4 +1,4 @@
-import { Platform } from '@/hooks/usePlatforms';
+import { Platform } from '@/entities/Platform';
 
 export const getPlatformIconsList = (list: { platform: Platform }[]) => {
   if (!list?.length) return null;
