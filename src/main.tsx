@@ -8,16 +8,21 @@ import { RouterProvider } from 'react-router-dom';
 import router from './routes.tsx';
 import './index.css';
 
+import { store } from './store/store.ts';
+import { Provider } from 'react-redux';
+
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ChakraProvider value={defaultSystem}>
       <ColorModeProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </Provider>
       </ColorModeProvider>
     </ChakraProvider>
   </StrictMode>

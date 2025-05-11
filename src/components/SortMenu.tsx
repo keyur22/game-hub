@@ -8,10 +8,15 @@ import {
 
 import { BsChevronDown } from 'react-icons/bs';
 import useGameQueryStore from '@/store';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setSortOrder } from '@/store/gameQuerySlice';
 
 const SortMenu = () => {
-  const sortOrder = useGameQueryStore((state) => state.gameQuery.sortOrder);
-  const onSortOrderSelect = useGameQueryStore((state) => state.setSortOrder);
+  // const sortOrder = useGameQueryStore((state) => state.gameQuery.sortOrder);
+  // const onSortOrderSelect = useGameQueryStore((state) => state.setSortOrder);
+
+  const sortOrder = useAppSelector((state) => state.gameQuery.sortOrder);
+  const dispatch = useAppDispatch();
 
   const sortOrders = [
     {
@@ -43,7 +48,7 @@ const SortMenu = () => {
             justifyContent='space-between'
             my={2}
             cursor='pointer'
-            onClick={() => onSortOrderSelect(order.value)}
+            onClick={() => dispatch(setSortOrder(order.value))}
           >
             <Text>{order.label}</Text>
           </MenuItem>

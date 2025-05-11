@@ -1,6 +1,8 @@
 import useGenres from '@/hooks/useGenres';
 import { getCroppedImageUrl } from '@/services/image-url';
 import useGameQueryStore from '@/store';
+import { setGenreId } from '@/store/gameQuerySlice';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import {
   List,
   HStack,
@@ -14,8 +16,11 @@ import {
 
 const GenreList = () => {
   const { isLoading: loading, data: genres, error } = useGenres();
-  const selectedGenreId = useGameQueryStore((state) => state.gameQuery.genreId);
-  const onGenreSelect = useGameQueryStore((state) => state.setGenreId);
+  // const selectedGenreId = useGameQueryStore((state) => state.gameQuery.genreId);
+  // const onGenreSelect = useGameQueryStore((state) => state.setGenreId);
+
+  const selectedGenreId = useAppSelector((state) => state.gameQuery.genreId);
+  const dispatch = useAppDispatch();
 
   if (loading)
     return (
@@ -48,7 +53,7 @@ const GenreList = () => {
                 objectFit='cover'
               />
               <Button
-                onClick={() => onGenreSelect(genre.id)}
+                onClick={() => dispatch(setGenreId(genre.id))}
                 variant='ghost'
                 fontWeight={selectedGenreId === genre.id ? 'bolder' : 'normal'}
                 whiteSpace='normal'

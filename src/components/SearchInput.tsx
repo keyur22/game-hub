@@ -4,16 +4,21 @@ import { BsSearch } from 'react-icons/bs';
 import { useRef } from 'react';
 import useGameQueryStore from '@/store';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '@/store/hooks';
+import { setSearchInput } from '@/store/gameQuerySlice';
 
 const SearchInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const setSearchInput = useGameQueryStore((state) => state.setSearchInput);
+  // const setSearchInput = useGameQueryStore((state) => state.setSearchInput);
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
 
   const onSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputRef.current) {
-      setSearchInput(inputRef.current?.value);
+      dispatch(setSearchInput(inputRef.current?.value));
+      // setSearchInput(inputRef.current?.value);
       inputRef.current.blur();
       navigate('/');
     }

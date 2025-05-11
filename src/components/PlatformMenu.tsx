@@ -7,15 +7,22 @@ import {
   MenuTrigger
 } from '@/components/ui/menu';
 import { BsChevronDown } from 'react-icons/bs';
-import useGameQueryStore from '@/store';
+// import useGameQueryStore from '@/store';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setPlatformId } from '@/store/gameQuerySlice';
 
 const PlatformMenu = () => {
   const { data, error, isLoading: loading } = usePlatforms();
 
-  const selectedPlatformId = useGameQueryStore(
-    (state) => state.gameQuery.platformId
-  );
-  const onPlatformSelect = useGameQueryStore((state) => state.setPlatformId);
+  // const selectedPlatformId = useGameQueryStore(
+  //   (state) => state.gameQuery.platformId
+  // );
+  // const onPlatformSelect = useGameQueryStore((state) => state.setPlatformId);
+
+  const selectedPlatformId = useAppSelector((state) => state.gameQuery);
+  const dispatch = useAppDispatch();
+
+  console.log('Platform rerender');
 
   const selectedPlatform = data?.results.find(
     (platform) => platform.id === selectedPlatformId
@@ -40,7 +47,7 @@ const PlatformMenu = () => {
             justifyContent='space-between'
             my={2}
             cursor='pointer'
-            onClick={() => onPlatformSelect(platform.id)}
+            onClick={() => dispatch(setPlatformId(platform.id))}
           >
             <Text>{platform.name}</Text>
           </MenuItem>

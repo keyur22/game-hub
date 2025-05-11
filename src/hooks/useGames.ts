@@ -2,6 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import APIClient, { Response } from '@/services/api-client';
 import useGameQueryStore, { GameQuery } from '@/store';
 import { Game } from '../entities/Game';
+import { useAppSelector } from '@/store/hooks';
 
 const apiClient = new APIClient<Game>('/games');
 
@@ -20,7 +21,8 @@ const fetchGames = (gameQuery: GameQuery, pageParam: unknown) => {
 };
 
 const useGames = () => {
-  const gameQuery = useGameQueryStore((state) => state.gameQuery);
+  // const gameQuery = useGameQueryStore((state) => state.gameQuery);
+  const gameQuery = useAppSelector((state) => state.gameQuery);
 
   return useInfiniteQuery<Response<Game>>({
     initialPageParam: 1,
