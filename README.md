@@ -1,8 +1,15 @@
-# GameHub
+## 📋 <a name="table">Table of Contents</a>
 
-[GameHub](game-hub-one-xi-55.vercel.app) is a mini version of RAWG - A video game discovery service
+1. 🤖 [Introduction](#introduction)
+2. ⚙️ [Tech Stack](#tech-stack)
+3. 🔋 [Features](#features)
+4. 🤸 [Setup](#setup)
 
-Technologies Used:
+## <a name="introduction">🤖 Introduction</a>
+
+GameHub is a video game discovery web application that enables users to explore and search for games by platform, genre, and other filters to easily discover new and trending titles.
+
+## <a name="tech-stack">⚙️ Tech Stack</a>
 
 - Web Technologies: HTMl, CSS, JavaScript, TypeScript
 - CSS Frameworks: Chakra UI
@@ -11,10 +18,51 @@ Technologies Used:
 - Server-Side State Management: React Query
 - Routing: React Router
 
-Funtionalities Implemented:
+## <a name="features">🔋 Features</a>
 
-- Filter games by Genres and Platforms.
-- Search games by Name.
-- Infinite Scrolling while displaying list of games.
-- Filter games by Popularity, Date Added and other options.
-- Game detail page showcasing images and other information.
+👉 Filter games: Allow users to narrow down the game list based on their favorite genres (e.g., Action, RPG) and platforms (e.g., PC, PlayStation).
+
+👉 Search games: Enable a search bar where users can input a game’s name to instantly locate it.
+
+👉 Infinite Scrolling for games list: Load more games dynamically as the user scrolls instead of traditional pagination. This keeps the browsing experience smooth and uninterrupted.
+
+👉 Sort games: Provide sorting filters such as most popular, recently added, or highest rated.
+
+👉 Game description: Each game has a dedicated page with screenshots, description, release date, and other key details
+
+👉 Dark Mode Toggle: Let users switch between light and dark themes based on their preference.
+
+## <a name="setup">🤸 Setup</a>
+
+Follow these steps to set up the project locally on your machine.
+
+**Prerequisites**
+
+Make sure you have the following installed on your machine:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+**Cloning the Repository**
+
+```bash
+git clone https://github.com/keyur22/game-hub.git
+cd game-hub
+```
+
+**Installation**
+
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+
+**Running the Project**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
